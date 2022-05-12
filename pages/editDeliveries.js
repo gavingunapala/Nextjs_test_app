@@ -2,6 +2,19 @@ import NAVBAR from "../components/navbar";
 import FOOTER from "../components/footer";
 export default function editDeliveries(){
     return(
+    <>
+    <head>
+        <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  </head>
         <div>
             <NAVBAR/><br/>
             <h1 className="mydelivary">Add Delivery Details</h1>
@@ -23,12 +36,12 @@ export default function editDeliveries(){
                     <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
                 </div>
                 <div className="col-md-6">
-                    <label for="inputEmail4" className="form-label">Ordered Date</label>
-                    <input type="email" className="form-control" id="inputEmail4"/>
+                    <label for="OrderedDate">Ordered Date</label>
+                    <input type="date" id="OrderedDate" name="OrderedDate"className="form-control" />  
                 </div>
                 <div className="col-md-6">
-                    <label for="inputPassword4" className="form-label">Delivery Date</label>
-                    <input type="password" className="form-control" id="inputPassword4"/>
+                    <label for="DeliveryDate">Delivery Date</label>
+                    <input type="date" id="DeliveryDate" name="DeliveryDate"className="form-control" />  
                 </div>
                 <div className="col-md-6">
                     <label for="inputCity" className="form-label">ddd</label>
@@ -38,7 +51,9 @@ export default function editDeliveries(){
                     <label for="inputState" className="form-label">Delivery Partner</label>
                     <select id="inputState" className="form-select">
                     <option selected>Choose...</option>
-                    <option>...</option>
+                    <option>DHL</option>
+                    <option>LankaTravel</option>
+                    <option>LkPartner</option>
                     </select>
                 </div>
                 <div className="col-md-2">
@@ -51,6 +66,6 @@ export default function editDeliveries(){
         </form>
         <FOOTER/>
        </div>
-
+       </>
 );
 }

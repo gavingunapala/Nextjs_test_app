@@ -67,7 +67,6 @@ const submitData = (e) => {
     console.log(data);
   };
 
-
     return(
     <>
         <div>
@@ -123,7 +122,4 @@ const submitData = (e) => {
        </div>
        </>
 );
-
-
-
 }

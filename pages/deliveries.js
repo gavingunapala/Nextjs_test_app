@@ -51,6 +51,7 @@ function deliveries({ data }){
             {data.data.map((onedata) => (
         <tr key={onedata._id}>
             <TABLE
+            id = {onedata._id}
             UserName = {onedata.UserName}
             Address = {onedata.Address}
             OrderedItems = {onedata.OrderedItems}

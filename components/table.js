@@ -33,7 +33,7 @@ export default function(props){
                 <td>{props.DeliveryPartner}</td>
                 <td>{props.TotlePrice}</td>
                 <td>
-                    <a href='/editDeliveries'><i className="fa fa-pencil"aria-hidden="true" style={{color:"green"}}/></a> &nbsp;&nbsp;
+                    <a href={`/editpage/${encodeURIComponent(props.id)}`}><i className="fa fa-pencil"aria-hidden="true" style={{color:"green"}}/></a> &nbsp;&nbsp;
                     <a onClick={deleteItems}><i className="fa fa-trash" aria-hidden="true"style={{color:"red"}} /> </a>
                 </td>
                 {/* </tr> */}

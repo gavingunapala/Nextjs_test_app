@@ -7,12 +7,11 @@ import TABLE from "../components/table";
 import axios from "axios";
 
 function deliveries({ data }){
+   
 
     // useState [adata ,setadata] = ([]);
 
-    function deleteItems(){
-        confirm('Format the hard disk?')
-    }
+
     console.log(data.data);
 
     return(

@@ -17,7 +17,7 @@ export default function navbar(){
           <a className="nav-link" href="/deliveries">Deliveries</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Pricing</a>
+          <a className="nav-link" href="/editDeliveries">Add Data</a>
         </li>
         <li className="nav-item">
           <a className="nav-link disabled">Disabled</a>

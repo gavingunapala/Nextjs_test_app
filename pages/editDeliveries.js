@@ -2,8 +2,10 @@ import NAVBAR from "../components/navbar";
 import FOOTER from "../components/footer";
 import React, { useState } from 'react';
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 export default function editDeliveries(){
+    const router = useRouter()
 
     const [userId, setuserID] = useState('');
     const [username, setuserName] = useState('');
@@ -42,30 +44,29 @@ export default function editDeliveries(){
         setPrice(e.target.value);
     }
 
-const submitData = (e) => {
-    e.preventDefault();
-    let data = {
-        userId:userId,
-        UserName:username,
-        Address:Address,
-        OrderedItems:Items,
-        OrderedDate:OD,
-        DeliveryDate:DD,
-        DeliveryPartner:DP,
-        TotlePrice:Price
-    };
-    axios
-      .post("/api/deleveryApi", data)
-      .then(() => {
-        alert("added successfully!!!");
-        // router.push("/");
-      })
-
-      .catch((err) => {
-        alert(err);
-      });
-    console.log(data);
-  };
+    const submitData = (e) => {
+        e.preventDefault();
+        let data = {
+            userId:userId,
+            UserName:username,
+            Address:Address,
+            OrderedItems:Items,
+            OrderedDate:OD,
+            DeliveryDate:DD,
+            DeliveryPartner:DP,
+            TotlePrice:Price
+        };
+        axios
+          .post(`/api/deleveryApi`, data)
+          .then(() => {
+            alert("Added Data successfully!!!");
+            router.push("/deliveries");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+        console.log(data);
+      };
 
     return(
     <>

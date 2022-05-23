@@ -1,7 +1,4 @@
-import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link';
-
 import NAVBAR from '../components/navbar';
 import FOOTER from '../components/footer';
 import mypic from '../public/Deliveries.png';

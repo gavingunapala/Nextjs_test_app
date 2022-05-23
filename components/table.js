@@ -1,5 +1,8 @@
+import axios from "axios";
+import { useRouter } from 'next/router'
 
 export default function(props){
+    const router = useRouter()
     return(
         <>
         {/* <head>
@@ -41,6 +44,19 @@ export default function(props){
         </>
     );
     function deleteItems(){
-        confirm('Format the hard disk?')
+        confirm('are you want to delete this item?')
+        let delId = `${encodeURIComponent(props.id)}`
+        axios
+        .delete(`/api/${delId}`)
+        .then(() => {
+            router.push("/deliveries");
+            // alert("deleted successfully!!!");
+          
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    
+        console.log("deleted");
     }
 }

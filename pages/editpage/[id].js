@@ -2,8 +2,10 @@ import NAVBAR from "../../components/navbar";
 import FOOTER from "../../components/footer";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 export default function editpage(props){
+    const router = useRouter()
 
     const [userId, setuserID] = useState('');
     const [username, setuserName] = useState('');
@@ -73,18 +75,34 @@ const submitData = (e) => {
         DeliveryPartner:DP,
         TotlePrice:Price
     };
-//     axios
-//       .post("/api/deleveryApi", data)
-//       .then(() => {
-//         alert("added successfully!!!");
-//         // router.push("/");
-//       })
+    axios
+      .put(`/api/${userId}`, data)
+      .then(() => {
+        alert("updated successfully!!!");
+        router.push("/deliveries");
+      })
 
-//       .catch((err) => {
-//         alert(err);
-//       });
-//     console.log(data);
+      .catch((err) => {
+        alert(err);
+      });
+    console.log(data);
   };
+
+  function deleteItems(){
+    confirm('are you want to delete this item?')
+    axios
+    .delete(`/api/${userId}`)
+    .then(() => {
+        router.back()
+        alert("deleted successfully!!!");
+      
+    })
+    .catch((err) => {
+      alert(err);
+    });
+
+    console.log("deleted");
+}
 
     return(
     <>
@@ -94,7 +112,7 @@ const submitData = (e) => {
             <form className="mycontainer row g-3">
                 <div className="col-md-6">
                     <label for="userId" className="form-label">User ID</label>
-                    <input type="text" className="form-control" id="userId" value={userId} onChange={userIDSetter} />
+                    <input type="text" className="form-control" id="userId" value={userId} onChange={userIDSetter} readOnly={true}/>
                 </div>
                 <div className="col-md-6">
                     <label for="UserName" className="form-label">User Name</label>
@@ -137,7 +155,10 @@ const submitData = (e) => {
                     <input type="text" className="form-control" id="Price"value={Price}  onChange={priceSetter}/>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={submitData}>add Delivery</button>
+                    <button type="submit" className="btn btn-primary" onClick={submitData}>Update Delivery</button>
+                </div>
+                <div className="col-12">
+                    <button type="submit" className="btn btn-primary" onClick={deleteItems}> Delete</button>
                 </div>
         </form>
         <FOOTER/>

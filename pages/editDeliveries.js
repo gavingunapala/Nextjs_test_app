@@ -44,8 +44,20 @@ export default function editDeliveries(){
         setPrice(e.target.value);
     }
 
+    const sub=(e)=>{
+        ToggleClass(e);
+        setTimeout(submitData, 1500);
+    }
+
+    const [isActive, setActive] = useState("hide");
+
+    const ToggleClass = (e) => {
+        e.preventDefault()
+      setActive(!isActive);
+    };
+
     const submitData = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let data = {
             userId:userId,
             UserName:username,
@@ -59,7 +71,7 @@ export default function editDeliveries(){
         axios
           .post(`/api/deleveryApi`, data)
           .then(() => {
-            alert("Added Data successfully!!!");
+            // alert("Added Data successfully!!!");
             router.push("/deliveries");
           })
           .catch((err) => {
@@ -70,8 +82,24 @@ export default function editDeliveries(){
 
     return(
     <>
+    <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
         <div>
+
             <NAVBAR/><br/>
+            <body>
+            <div className={isActive ? "alert hide" :"alert show"}> 
+            {/* <div className='alert'> */}
+            <span className='fas fa-exclamation-circle'></span>
+            <span className='msg'>success : Data has been saved</span>
+            <span className='close-btn'>
+              <span className='fas fa-times'></span>
+            </span>
+          {/* </div> */}
+          </div>    
+          </body>
+
             <h1 className="mydelivary">Add Delivery Details</h1>
             <form className="mycontainer row g-3">
                 <div className="col-md-6">
@@ -116,7 +144,7 @@ export default function editDeliveries(){
                     <input type="text" className="form-control" id="Price"  onChange={priceSetter}/>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={submitData}>add Delivery</button>
+                    <button type="submit" className="btn btn-primary" onClick={sub}>add Delivery</button>
                 </div>
         </form>
         <FOOTER/>

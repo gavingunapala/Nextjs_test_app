@@ -1,10 +1,12 @@
 import axios from "axios";
+import swal from 'sweetalert';
 import { useRouter } from 'next/router'
 
 export default function(props){
     const router = useRouter()
     return(
         <>
+       <head> <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script></head>
         {/* <head>
         <link
     rel="stylesheet"
@@ -44,19 +46,55 @@ export default function(props){
         </>
     );
     function deleteItems(){
-        confirm('are you want to delete this item?')
-        let delId = `${encodeURIComponent(props.id)}`
-        axios
-        .delete(`/api/${delId}`)
-        .then(() => {
-            router.push("/deliveries");
-            // alert("deleted successfully!!!");
-          
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    
-        console.log("deleted");
+    //     if(confirm('are you want to delete this item?')){
+    //         let delId = `${encodeURIComponent(props.id)}`
+    //         axios
+    //         .delete(`/api/${delId}`)
+    //         .then(() => {
+    //             router.push("/deliveries");
+    //             // alert("deleted successfully!!!");
+              
+    //         })
+    //         .catch((err) => {
+    //           alert(err);
+    //         });
+        
+    //         console.log("deleted");
+    //     }
+    //     else{
+    //         console.log("cansaled")
+    //     }
+
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            let delId = `${encodeURIComponent(props.id)}`
+            axios
+            .delete(`/api/${delId}`)
+            .then(() => {
+                router.push("/deliveries");
+                // alert("deleted successfully!!!");
+              
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        
+            console.log("deleted"),
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          },
+          );
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+       
     }
 }

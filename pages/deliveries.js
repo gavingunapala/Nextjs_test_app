@@ -31,7 +31,8 @@ function deliveries({ data }){
                 </head>
             
             </>
-            <NAVBAR />
+            <NAVBAR /><a href={"/editDeliveries"} className="btn btn-success" style={{position: "absolute", right: "120px" , top:"80px"}} > add data&nbsp;&nbsp;    
+            <a ><i className="fa fa-plus" aria-hidden="true"style={{color:"green"}} /> </a></a>
             <h1 className='mydelivary'>All Delivery list</h1>
             <br/>
             <table className="table">

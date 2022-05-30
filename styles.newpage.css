@@ -1,3 +1,4 @@
+
 .column {
     float: left;
     width: 50%;
@@ -45,4 +46,74 @@
     padding-top: 2rem;
     padding-right: 20rem;
     padding-left:25rem;
+  }
+  /* .body{
+    overflow: hidden;
+  } */
+
+  .alert{
+    background-color: rgb(51, 163, 51);
+    padding: 20px 40px;
+    min-width: 420px;
+    position:absolute;
+    /* overflow: hidden; */
+    right: 0px;
+    top: 10px;
+    border-radius: 10px;
+    border-left: 10px solid green;
+  }
+  .alert.show{
+    animation: show_slide 1.5s  forwards;
+    animation-duration: 3s;
+  }
+  @keyframes show_slide{
+     0%{
+       transform: translateX(100%);
+     }
+     40%{
+      transform: translateX(-10%);
+    }
+    80%{
+      transform: translateX(0%);
+    }
+    100%{
+      transform: translateX(-10px);
+    }
+  }
+  
+
+  .alert.hide{
+    display: none;
+  }
+  
+  .alert.fa-exclamation-circle{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(154, 211, 69);
+    font-size: 30px;
+  }
+  .alert.msg{
+    padding: 0px 20px;
+    font-size: 18px;
+    color: rgb(0, 255, 47);
+  }
+  .alert.close-btn{
+    position:absolute;
+    right:0px;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgb(53, 101, 4);
+    padding:20px 18px;
+    cursor:pointer;
+  }
+  .close-btn:hover{
+    background: rgb(1, 51, 1);
+  }
+
+  .close-btn.fa-times{
+    color: rgb(6, 7, 4);
+    font-size: 22px;
+    line-height: 22px;
   }

@@ -62,9 +62,24 @@ export default function editpage(props){
     const priceSetter=(e)=>{
         setPrice(e.target.value);
     }
+
+    const sub=(e)=>{
+        ToggleClass(e);
+        setTimeout(submitData, 1500);
+    }
+
+    const [isActive, setActive] = useState("hide");
+
+    const ToggleClass = (e) => {
+        e.preventDefault()
+      setActive(!isActive);
+    };
+
+
+
 console.log(userId)
 const submitData = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let data = {
         userId:userId,
         UserName:username,
@@ -78,7 +93,6 @@ const submitData = (e) => {
     axios
       .put(`/api/${userId}`, data)
       .then(() => {
-        alert("updated successfully!!!");
         router.push("/deliveries");
       })
 
@@ -106,8 +120,21 @@ const submitData = (e) => {
 
     return(
     <>
+    
         <div>
             <NAVBAR/><br/>
+            <body>
+            <div className={isActive ? "alert hide" :"alert show"}> 
+            {/* <div className='alert'> */}
+            <span className='fas fa-exclamation-circle'></span>
+            <span className='msg'>success : Data has been saved</span>
+            <span className='close-btn'>
+              <span className='fas fa-times'></span>
+            </span>
+          {/* </div> */}
+          </div>    
+          </body>
+
             <h1 className="mydelivary">Add Delivery Details</h1>
             <form className="mycontainer row g-3">
                 <div className="col-md-6">
@@ -155,10 +182,10 @@ const submitData = (e) => {
                     <input type="text" className="form-control" id="Price"value={Price}  onChange={priceSetter}/>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={submitData}>Update Delivery</button>
+                    <button type="submit" className="btn btn-primary" onClick={sub}>Update Delivery</button>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={deleteItems}> Delete</button>
+                    <button type="submit" className="btn btn-danger" onClick={deleteItems}> Delete</button>
                 </div>
         </form>
         <FOOTER/>
